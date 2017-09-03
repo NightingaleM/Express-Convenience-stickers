@@ -6,10 +6,11 @@ var Waterfall = require('mod/waterfall.js')
 
 NoteManager.load()
 
-
 $('.add-note').on('click',function(){
-  console.log(1)
   NoteManager.add()
+})
+$('.water-note').on('click',function(){
+  Waterfall.init($('#content'))
 })
 
 Event.on('waterfall',function(){

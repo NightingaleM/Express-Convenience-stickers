@@ -11,7 +11,8 @@ var NoteManager = (function () {
           $.each(ret.data, function (index, article) {
             new Note({
               id: article.id,
-              context: article.context
+              context: article.context,
+              lastTime: article.updatedAt
             })
           })
           Event.fire('waterfall')

@@ -573,9 +573,9 @@ toast.prototype={
   },
   showToast: function(){
     var _this = this
-    this.$toast.fadeIn(400,function(){
+    this.$toast.fadeIn(600,function(){
       setTimeout(function(){
-        _this.$toast.fadeOut(300,function(){
+        _this.$toast.fadeOut(500,function(){
           _this.$toast.remove()
         })
       },_this.time)
@@ -603,10 +603,11 @@ var Waterfall = __webpack_require__(16)
 
 NoteManager.load()
 
-
 $('.add-note').on('click',function(){
-  console.log(1)
   NoteManager.add()
+})
+$('.water-note').on('click',function(){
+  Waterfall.init($('#content'))
 })
 
 Event.on('waterfall',function(){
@@ -663,7 +664,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "* {\n  padding: 0;\n  margin: 0;\n}\n.add-note {\n  top: 10px;\n  left: 10px;\n  border: 1px solid;\n  padding: 5px;\n}\n#content {\n  width: 100%;\n  min-height: 100vh;\n  position: relative;\n}\n", ""]);
+exports.push([module.i, "* {\n  padding: 0;\n  margin: 0;\n}\n#layout {\n  display: flex;\n  flex-direction: column;\n}\n.head {\n  height: 130px;\n  border-bottom: 1px solid;\n}\n.head .add-note {\n  cursor: pointer;\n  position: absolute;\n  top: 30px;\n  left: -70px;\n  text-align: center;\n  border: 1px solid;\n  width: 250px;\n  transform: rotate(315deg);\n}\n.head .water-note {\n  cursor: pointer;\n  position: absolute;\n  top: 10px;\n  left: -100px;\n  text-align: center;\n  border: 1px solid;\n  width: 250px;\n  transform: rotate(315deg);\n}\n.head .sign-in {\n  cursor: pointer;\n  position: absolute;\n  top: 30px;\n  right: -70px;\n  text-align: center;\n  border: 1px solid;\n  width: 250px;\n  transform: rotate(45deg);\n}\n#content {\n  flex-grow: 1;\n  min-height: 100vh;\n  position: relative;\n}\n", ""]);
 
 // exports
 
@@ -780,7 +781,8 @@ var NoteManager = (function () {
           $.each(ret.data, function (index, article) {
             new Note({
               id: article.id,
-              context: article.context
+              context: article.context,
+              lastTime: article.updatedAt
             })
           })
           Event.fire('waterfall')
@@ -849,7 +851,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, ".toast {\n  position: fixed;\n  left: 50%;\n  transform: translateX(-50%);\n  bottom: 15px;\n  color: #d55a39;\n  padding: 5px 10px;\n  border-radius: 3px;\n  box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.6);\n  display: none;\n}\n", ""]);
+exports.push([module.i, ".toast {\n  position: fixed;\n  left: 50%;\n  transform: translateX(-50%);\n  bottom: 15px;\n  color: #d55a39;\n  padding: 10px 15px;\n  font-size: 1.3em;\n  border-radius: 3px;\n  box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.6);\n  display: none;\n}\n", ""]);
 
 // exports
 
@@ -861,10 +863,11 @@ exports.push([module.i, ".toast {\n  position: fixed;\n  left: 50%;\n  transform
 /* WEBPACK VAR INJECTION */(function($) {__webpack_require__(14)
 var Toast = __webpack_require__(4).Toast
 var Event = __webpack_require__(3)
+
 function Note(opt) {
   this.initNote(opt)
   this.createNote()
-  this.setStyle()
+  // this.setStyle()
   this.addEvent()
 }
 
@@ -887,7 +890,8 @@ Note.prototype = {
   defaultNote: {
     id: '',
     $content: $('#content').length > 0 ? $('#content') : $('body'),
-    context: 'input here'
+    context: 'input here',
+    lastTime: ''
   },
 
   initNote: function (tagNot) {
@@ -896,24 +900,45 @@ Note.prototype = {
       this.id = this.opt.id
     }
   },
+  updateTime: function (uptime) {
+    //2017-09-02 16:10:56.712 +00:00
+    var uptime = uptime.split('').slice(0, 16)
+    var Rtime = ""
+    $(uptime).each(function (index, tag) {
+      Rtime += tag
+    })
+    Rtime += "  +08:00"
+    return Rtime
 
+  },
   createNote: function () {
-    var cNot = $(`<div class='note'>
-          <div class='note-head'><span class='delete'>X<span></div>
-      <div class='note-content' contenteditable='true'></div>
-    </div>`)
+    var cNot = $(`<div class="note-c">
+    <div class="backcolor"></div>
+    <div class="note-head">
+      <div class="move"></div>
+      <div class="delete"></div>
+    </div>
+    <div class="note-box">
+    <div class="note-content" contenteditable="true"></div>
+    </div>
+  </div>`)
     this.$note = cNot
-    console.log(this.opt.context)
+
     this.$note.find('.note-content').html(this.opt.context)
+    if (this.id) {
+      this.$note.find('.note-box').html(`<div class="note-content" contenteditable="true"></div>
+      <div class="last-time"></div>`)
+      this.$note.find('.note-content').html(this.opt.context)
+      this.$note.find('.last-time').html(this.updateTime(this.opt.lastTime))
+    }
     this.opt.$content.append(this.$note)
-    if(!this.id) this.$note.css("bottom","10px")//新建放右
   },
 
-  setStyle: function () {
-    var ccolor = this.noteColor[parseInt(Math.random() * 12)];
-    this.$note.find('.note-head').css('background-color', ccolor[0])
-    this.$note.find('.note-content').css('background-color', ccolor[1])
-  },
+  // setStyle: function () {
+  //   var ccolor = this.noteColor[parseInt(Math.random() * 12)];
+  //   this.$note.find('.move').css('background-color', ccolor[0])
+  //   this.$note.find('.note-content').css('background-color', ccolor[1])
+  // },
 
   setLayout: function () {
     var _this = this
@@ -928,7 +953,7 @@ Note.prototype = {
   addEvent: function () {
     var _this = this,
       $note = this.$note,
-      $noteHead = this.$note.find('.note-head'),
+      $noteHead = this.$note.find('.move'),
       $noteContent = this.$note.find('.note-content'),
       $noteDelete = this.$note.find('.delete')
 
@@ -962,7 +987,7 @@ Note.prototype = {
     })
 
     $('body').on('mousemove', function (a) {
-      $('.draggable').length && $('.draggable').offset({
+      $('.draggable').length && $('.draggable').removeClass('new-note').offset({
         top: a.pageY - $('.draggable').data('evtPos').Y,
         left: a.pageX - $('.draggable').data('evtPos').X
       })
@@ -1066,7 +1091,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, ".note {\n  padding: 0;\n  margin: 20px;\n  position: absolute;\n  width: 120px;\n  min-height: 120px;\n  word-break: break-all;\n}\n.note-head {\n  border-bottom: 2px solid #4EDBA8;\n  width: 100%;\n  height: 20px;\n}\n.note-head span {\n  cursor: pointer;\n}\n.note-content {\n  padding: 10px;\n  margin: 0;\n  width: 100%;\n  min-height: 100px;\n}\n", ""]);
+exports.push([module.i, ".note {\n  background: #FF9966;\n  padding: 0;\n  padding-bottom: 20px;\n  margin: 10px 2px;\n  position: absolute;\n  width: 250px;\n  min-height: 150px;\n  word-break: break-all;\n  background: radial-gradient(circle at top left, transparent 20px, #FF9966 0) top left, radial-gradient(circle at top right, transparent 20px, #FF9966 0) top right, radial-gradient(circle at bottom right, transparent 20px, #FF9966 0) bottom right, radial-gradient(circle at bottom left, transparent 20px, #FF9966 0) bottom left;\n  background-size: 50% 50%;\n  background-repeat: no-repeat;\n}\n.note .note-head {\n  display: flex;\n  width: 200px;\n  height: 20px;\n  margin: 0 auto;\n}\n.note .note-head .move {\n  flex-grow: 3;\n  cursor: pointer;\n  border-right: 2px solid #fff;\n}\n.note .note-head .delete {\n  flex-grow: 1;\n  cursor: pointer;\n}\n.note .note-box {\n  margin: 2px auto;\n  padding: 10px;\n  width: 200px;\n  min-height: 100px;\n  border: 2px dashed;\n  outline: none;\n}\n.note .backcolor {\n  z-index: -1;\n  position: absolute;\n  background-color: #FF9966;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 250px;\n  height: 10px;\n}\n.note-c {\n  position: fixed;\n  top: 0;\n  left: 115px;\n}\n.note-c .note-box {\n  margin: 2px auto;\n  padding: 10px;\n  width: 200px;\n  min-height: 100px;\n  border: 2px dashed;\n  outline: none;\n}\n.note-content {\n  min-height: 100px;\n  outline: none;\n}\n.note-box {\n  position: relative;\n  flex-direction: column;\n}\n.note-box .last-time {\n  font-size: 0.6em;\n  text-align: right;\n  position: absolute;\n  right: 15px;\n  bottom: -20px;\n}\n", ""]);
 
 // exports
 
@@ -1081,21 +1106,22 @@ exports.push([module.i, ".note {\n  padding: 0;\n  margin: 20px;\n  position: ab
   function renden(content) {
     $content = content
     $items = $content.children()
-
+    $items.removeClass('note-c').addClass('note')
+    
     var itemWidth = $items.outerWidth(true),
       colNum = parseInt($(window).width() / itemWidth),
       colSumHeight = []
-    console.log(itemWidth)
-    console.log(colNum)
+    console.log("元素宽度"+itemWidth)
+    console.log("可摆放的列数"+colNum)
 
 
     for (let i = 0; i < colNum; i++) {
       colSumHeight.push(0)
     }
-    console.log(colSumHeight)
+    console.log("数组"+colSumHeight)
     $items.each(function (index,tag) {
       $tag = $(tag)
-
+      
       var minHeight = colSumHeight[0],
         minCol = 0
 
@@ -1111,7 +1137,8 @@ exports.push([module.i, ".note {\n  padding: 0;\n  margin: 20px;\n  position: ab
 
       $tag.css({
         'left': itemWidth * minCol,
-        'top': minHeight
+        'top': minHeight,
+        'bottom':''
       })
 
     })

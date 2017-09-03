@@ -3,16 +3,53 @@
   margin: 0;
 }
 
-.add-note{
-  top: 10px;
-  left: 10px;
-  border: 1px solid;
-  padding: 5px;
+#layout {
+  display: flex;
+  flex-direction: column;
 }
 
+.head {
+  height: 130px;
+  border-bottom: 1px solid;
+
+  .add-note{
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    left: -70px;
+    text-align: center;
+    border: 1px solid;
+    width: 250px;
+    transform: rotate(315deg);
+  }
+  .water-note{
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: -100px;
+    text-align: center;
+    border: 1px solid;
+    width: 250px;
+    transform: rotate(315deg);
+  }
+  .sign-in{
+    cursor: pointer;  
+    position: absolute;
+    top: 30px;
+    right: -70px;
+    text-align: center;
+    border: 1px solid;
+    width: 250px;
+    transform: rotate(45deg);
+  }
+}
 
 #content{
-  width: 100%;
+  flex-grow: 1;
   min-height: 100vh;
   position: relative;
+  // background-color: #F39D39;
+  // background-image: url(../../public/imgs/mb.jpg);
+  // background: url("imgs/2.jpg");
+  // background-repeat: no-repeat;
 }

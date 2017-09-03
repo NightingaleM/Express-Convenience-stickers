@@ -4,6 +4,7 @@ var Note = require('../model/note').Note
 /* GET users listing. */
 router.get('/notes', function (req, res, next) {
   Note.findAll({ raw: true }).then(function (notes) {
+    console.log(notes)
     res.send({status:0,data:notes})
   })
 });
@@ -21,6 +22,7 @@ router.post('/notes/add', function (req, res, next) {
 
 router.post('/notes/edit', function (req, res, next) {
   Note.update({context: req.body.context},{where:{id:req.body.id}}).then(function(){
+    console.log()
     console.log(arguments)
     res.send({status:0})
   })

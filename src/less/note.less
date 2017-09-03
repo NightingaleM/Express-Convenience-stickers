@@ -1,26 +1,83 @@
 .note{
+  background:#FF9966;  
   padding: 0;
-  margin: 20px;
+  padding-bottom: 20px;
+  margin: 10px 2px;
   position: absolute;
-  width: 120px;
-  min-height: 120px;
+  width: 250px;
+  min-height: 150px;
   word-break: break-all;
+  background: radial-gradient(circle at top left, transparent 20px, #FF9966 0) top left, 
+              radial-gradient(circle at top right, transparent 20px, #FF9966 0) top right, 
+              radial-gradient(circle at bottom right, transparent 20px, #FF9966 0) bottom right, 
+              radial-gradient(circle at bottom left, transparent 20px, #FF9966 0) bottom left; 
+  background-size: 50% 50%; 
+  background-repeat: no-repeat;
+
+  .note-head{
+    display:flex;
+    width: 200px;
+    height: 20px;
+    margin: 0 auto;
+    .move{
+      flex-grow:3;
+      cursor: pointer;  
+      border-right: 2px solid #fff;
+    }
+    .delete{
+      flex-grow:1;
+      cursor: pointer;  
+    }
+  }
+
+  .note-box {
+    margin: 2px auto;  
+    padding: 10px;
+    width: 200px;
+    min-height: 100px;
+    border: 2px dashed;
+    outline:none;
+  }
+  .backcolor{
+    z-index:-1;
+    position: absolute;
+    background-color:#FF9966;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 250px;
+    height: 10px;
+  }
 }
 
 
-.note-head{
-  border-bottom: 2px solid #4EDBA8;
-  width: 100%;
-  height: 20px;
+.note-c{
+  position: fixed;
+  top: 0;
+  left: 115px;
+  .note-box {
+    margin: 2px auto;  
+    padding: 10px;
+    width: 200px;
+    min-height: 100px;
+    border: 2px dashed;
+    outline:none;
+  }
 }
 
-.note-head span {
-  cursor: pointer;
+.note-content{
+  min-height:100px;
+  outline:none;
 }
 
-.note-content {
-  padding: 10px;
-  margin: 0;
-  width: 100%;
-  min-height: 100px;
+.note-box{
+  position: relative;
+  flex-direction: column;
+  .last-time{
+    font-size: 0.6em;
+    text-align: right;
+    position: absolute;
+    right: 15px;
+    bottom: -20px;
+  }
 }

@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var notebook = require('./routes/notebook');
 var api = require('./routes/api');
-var auth = require('./routes/auth');
+// var auth = require('./routes/auth');
 
 var app = express();
 
@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', notebook);
 app.use('/api', api);
-app.use('/auth', auth);
+// app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
