@@ -1,4 +1,4 @@
-require('less/index.less')
+require('less/notewall.less')
 
 var Event = require('mod/event.js')
 var NoteManager = require('mod/note-manager.js').NoteManager

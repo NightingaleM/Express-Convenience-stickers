@@ -2,27 +2,24 @@ var webpack = require('webpack')
 var path = require('path')
 
 module.exports = {
-  entry: path.join(__dirname, "js/app/index.js"),
+  entry: {
+    main: path.join(__dirname, "js/app/main.js"),    
+    note: path.join(__dirname, "js/app/note.js"),
+    mobile: path.join(__dirname, "js/app/mobile.js")    
+},
   output: {
     path: path.join(__dirname, "../public/js"),
-    filename: "index.js"
+    filename: "[name].js"
   },
   module: {
     rules: [
       {
         test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"]
+        loader: ["style-loader", "css-loader", "less-loader"]
       },
       {
         test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192
-            }
-          }
-        ]
+        loader: 'url-loader?limit=8192'
       }
     ]
   },

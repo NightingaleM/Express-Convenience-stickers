@@ -1,0 +1,290 @@
+*{margin: 0;padding: 0;box-sizing: border-box;}
+html{
+  overflow-y: hidden;
+}
+body {
+  background-color: rgb(182, 233, 237);
+}
+.layout{
+  height:100vh;
+  width: 100vw;
+  min-width: 850px;
+  max-width: 1600px;
+  overflow-x: hidden;
+  margin: 0 auto;
+}
+.hidden {
+  overflow: hidden;
+}
+.page {
+  display: flex;
+  padding: 1px;
+  height:100vh;
+  width:100%;
+  transition: transform 600ms;
+}
+
+
+
+/* 首页---ISAY */
+.isay {
+  background: linear-gradient(255deg, #c3f9ea, #eefe9a);
+  justify-content: center;
+  align-items: center;
+}
+.isay h3 {
+  display: inline-block;
+}
+.isay .say,
+.isay .myself {
+  list-style: none;
+  height: 85%;
+  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  margin: 0 30px;
+}
+.isay .say li,
+.isay .myself li {
+  display: none;
+  /* transition: all 600ms; */
+  background-color: #92FD9B;
+  padding: 5px;
+  border: 2px solid #92FD9B;
+  border-radius: 8px;
+  position: relative;
+  margin-top: 10px;
+  left: 10px;
+  box-shadow: 3px 3px 8px 2px #707070;
+  max-width: 300px;
+  /* justify-content: space-around; */
+  perspective: 150;
+}
+.isay .myself a {
+  text-decoration: none;
+  color: #000;
+}
+.isay .say li:before {
+  content: '';
+  border-right: 10px solid #92FD9B;
+  border-bottom: 10px solid transparent;
+  border-top: 10px solid transparent;
+  position: absolute;
+  top: 50%;
+  transform: translate(0,-50%);
+  left: -10px;
+}
+.isay .say li:after {
+  content: '';
+  border-right: 10px solid #92FD9B;
+  border-bottom: 10px solid transparent;
+  border-top: 10px solid transparent;
+  position: absolute;
+  top: 50%;
+  transform: translate(0,-50%);
+  left: -8px;
+}
+.isay .say li:hover,
+.isay .myself li:hover{
+  box-shadow: 6px 6px 15px 3px #707070;
+  transform: rotateX(10deg);
+  background-color: #73FB7A;
+  border: 2px solid #73FB7A;
+}
+.mygit {
+  cursor: pointer;
+}
+.jianshu {
+  cursor: pointer;
+}
+.isay .myself .mygit:hover {
+  cursor: pointer;
+  background-color: #F8EA70;
+  border: 2px solid #F8EA70;
+}
+.isay .myself .jianshu:hover {
+  cursor: pointer;
+  background-color: #F8EA70;  
+  border: 2px solid #F8EA70;
+}
+/* 作品---WORKS */
+.works {
+  flex-direction: column;
+  background-color: #E9EE9D;
+}
+.works h2 {
+  margin-top: 80px;
+  text-align: center;  
+}
+.works .workbox {
+  display: flex;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+  width: 75%;
+  min-width: 840px;
+  height: 800px;
+}
+
+.works .wood {
+  position: absolute;
+}
+/* 书柜木板 */
+.works .workbox .dbbookcase{
+  position: relative;
+  width: 80px;
+  height: auto;
+}
+.workbox .dbbookcase .positive {
+  width: 38px;
+  height: 500px;
+  background-color: #B18129;
+  bottom: 0;
+}
+.workbox .dbbookcase .side {
+  width: 39px;
+  height: 35px;
+  transform: skewX(-50deg);
+  background-color: #C99439;
+  bottom: 499px;
+  left: 19px;
+}
+.workbox .dbbookcase .top {
+  width: 43px;
+  height: 534px;
+  transform: skewY(-40deg);
+  background-color: #9C702A;
+  bottom: -19px;
+  left: 35px;
+}
+    
+/* 书柜格子 */
+.works .workbox .bookcasecontent {
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.works .workbox .bookcasecontent>div .positive {
+  width: 100%;
+  height: 30px;
+  background-color: #B18129;
+  bottom: -30px;
+}
+.works .workbox .bookcasecontent>div .positive::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  background-color: #B18129;
+  left: -46px;
+}
+.works .workbox .bookcasecontent>div .top {
+  width: 100%;
+  height: 30px;
+  background-color: #9C702A;
+  bottom: 0;
+  transform: skewX(-50deg);
+  left: 20px;
+}
+.works .workbox .bookcasecontent>div .top::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  background-color: #9C702A;
+  left: -46px;
+  transform: skewX(-8deg);
+  
+}
+.works .workbox .bookcasecontent .topbookcase {
+  width: 100%;
+  position: absolute;
+  bottom: 320px;
+}
+.works .workbox .bookcasecontent .bottombookcase {
+  width: 100%;  
+  position: absolute;
+  bottom: 120px;
+}
+
+/* 作品 */
+.works .workbox .bookcasecontent .dbwork {
+  position: relative;
+  bottom: 10px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-around;
+}
+.works .workbox .bookcasecontent .dbwork .work{
+  opacity: 0.65;
+  background-color: #E9E8E8;
+  width: 40%;
+  max-height: 130px;
+  min-width: 150px;
+  min-height: 130px;
+  margin: 0 30px;
+  display: flex;
+  transform: skewX(-12deg);
+  transition: all 500ms;
+}
+.works .workbox .bookcasecontent .dbwork .work:hover{
+  opacity: 0.85;
+  transform: skewX(-1deg);    
+}
+.works .workbox .bookcasecontent .dbwork img{
+  height: 130px;
+  width: 140px;
+}
+.works .workbox .bookcasecontent .dbwork .work a{
+  text-decoration: none;
+  color: #000;
+  padding: 2px 5px;
+  position: absolute;
+  right: 20px;
+  bottom: 2px;
+  border-radius: 3px;
+  background-color: #f4ff44;
+}
+/* 技能----skills */
+.skills {
+  flex-direction: column;
+  background: linear-gradient(255deg, #c3f9ea, #eefe9a);
+  
+}
+.skills h2 {
+  margin-top: 80px;
+  text-align: center;  
+  
+}
+.skills #canvas {
+  box-sizing: content-box;
+  margin: 0 auto;
+  margin-top: 15px;
+  width: 700px;
+  height: 460px;
+}
+
+/* 联系方式---content */
+.content {
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background-color: #c3f9ea;
+}
+.content h2 {
+  /* margin-top: 80px; */
+  text-align: center;
+}
+.content ul {
+  width: 40%;
+  min-width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 50px;
+  font-size: 1.4em;
+}

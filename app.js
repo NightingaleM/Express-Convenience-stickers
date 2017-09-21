@@ -8,9 +8,12 @@ var passport = require('passport');
 var session = require('express-session');
 
 
+var main = require('./routes/main');
 var notebook = require('./routes/notebook');
 var api = require('./routes/api');
-var auth = require('./routes/oauth');
+var mobile = require('./routes/mobile');
+
+// var auth = require('./routes/oauth');
 
 var app = express();
 
@@ -30,9 +33,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.use('/', notebook);
+app.use('/',main);
+app.use('/note', notebook);
 app.use('/api', api);
-app.use('/oauth', auth);
+app.use('/mobile', mobile);
+
+// app.use('/oauth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
