@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -76,41 +76,6 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-var EventCenter = (function () {
-  var events = {}
-  function on(evt, handler) {
-    events[evt] = events[evt] || []
-    events[evt].push({
-      handler: handler
-    })
-  }
-  function fire(evt, args) {
-    if (!events[evt]) {
-      return
-    }
-    for (var i = 0; i < events[evt].length; i++) {
-      events[evt][i].handler(args)
-    }
-  }
-
-  return {
-    on: on,
-    fire: fire
-  }
-})()
-
-
-module.exports = EventCenter;
-
-
-// EventCenter.on('text-change',function(){
-//   console.log(data)
-// })
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports) {
 
 /*
@@ -192,7 +157,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -551,6 +516,41 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+var EventCenter = (function () {
+  var events = {}
+  function on(evt, handler) {
+    events[evt] = events[evt] || []
+    events[evt].push({
+      handler: handler
+    })
+  }
+  function fire(evt, args) {
+    if (!events[evt]) {
+      return
+    }
+    for (var i = 0; i < events[evt].length; i++) {
+      events[evt][i].handler(args)
+    }
+  }
+
+  return {
+    on: on,
+    fire: fire
+  }
+})()
+
+
+module.exports = EventCenter;
+
+
+// EventCenter.on('text-change',function(){
+//   console.log(data)
+// })
+
+/***/ }),
 /* 4 */
 /***/ (function(module, exports) {
 
@@ -655,41 +655,16 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-
-var Ispc = (function () {
-  var uAgent = navigator.userAgent.toLowerCase()
-  console.log(uAgent)
-
-  var reg = /(phone|pad|pod|iphone|ipod|ios|ipad|android|mobile|blackberry|iemobile|mqqbrowser|juc|fennec|wosbrowser|browserng|webos|symbian|windows phone)/i
-
-  if (reg.test(uAgent)) {
-    console.log('这是手机')
-    if(location.pathname == '/mobile') return 
-    location.href = '/mobile'
-  }else{
-    if(location.pathname == '/') return     
-    console.log('这是PC')
-    location.href = '/'
-  }
-})()
-
-module.exports.Ispc = Ispc;
-
-
-/***/ }),
-/* 7 */,
-/* 8 */
+/* 6 */,
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {__webpack_require__(9)
+/* WEBPACK VAR INJECTION */(function($) {__webpack_require__(8)
 
-var Event = __webpack_require__(1)
-var FullPage = __webpack_require__(11).Fullpage
-var Isay = __webpack_require__(13).Isay
-var Ispc = __webpack_require__(6).Ispc
+var Event = __webpack_require__(3)
+var FullPage = __webpack_require__(10).Fullpage
+var Isay = __webpack_require__(12).Isay
+var Ispc = __webpack_require__(13).Ispc
 
 // var fullp = new Fullpage($('#pageLayout'))
 // new Isay($('.say'), $('.myself'))
@@ -708,13 +683,13 @@ new Isay($('.say'), $('.myself'))
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(10);
+var content = __webpack_require__(9);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -722,7 +697,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(3)(content, options);
+var update = __webpack_require__(2)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -739,10 +714,10 @@ if(false) {
 }
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(undefined);
+exports = module.exports = __webpack_require__(1)(undefined);
 // imports
 
 
@@ -753,10 +728,10 @@ exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {var SkillCanvas = __webpack_require__(12).SkillCanvas
+/* WEBPACK VAR INJECTION */(function($) {var SkillCanvas = __webpack_require__(11).SkillCanvas
 
 function Fullpage(opt) {
   this.$opt = opt
@@ -835,7 +810,7 @@ module.exports.Fullpage = Fullpage
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports) {
 
 var SkillCanvas = (function () {
@@ -909,7 +884,7 @@ module.exports.SkillCanvas = SkillCanvas
 
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports) {
 
 
@@ -956,6 +931,31 @@ Isay.prototype = {
 }
 
 module.exports.Isay = Isay
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+
+var Ispc = (function () {
+  var uAgent = navigator.userAgent.toLowerCase()
+  console.log(uAgent)
+
+  var reg = /(phone|pad|pod|iphone|ipod|ios|ipad|android|mobile|blackberry|iemobile|mqqbrowser|juc|fennec|wosbrowser|browserng|webos|symbian|windows phone)/i
+
+  if (reg.test(uAgent)) {
+    console.log('这是手机')
+    if(location.pathname == '/mobile') return 
+    location.href = '/mobile'
+  }else{
+    if(location.pathname == '/') return     
+    console.log('这是PC')
+    location.href = '/'
+  }
+})()
+
+module.exports.Ispc = Ispc;
 
 
 /***/ })

@@ -65,86 +65,13 @@
 /************************************************************************/
 /******/ ({
 
-/***/ 1:
-/***/ (function(module, exports) {
-
-var EventCenter = (function () {
-  var events = {}
-  function on(evt, handler) {
-    events[evt] = events[evt] || []
-    events[evt].push({
-      handler: handler
-    })
-  }
-  function fire(evt, args) {
-    if (!events[evt]) {
-      return
-    }
-    for (var i = 0; i < events[evt].length; i++) {
-      events[evt][i].handler(args)
-    }
-  }
-
-  return {
-    on: on,
-    fire: fire
-  }
-})()
-
-
-module.exports = EventCenter;
-
-
-// EventCenter.on('text-change',function(){
-//   console.log(data)
-// })
-
-/***/ }),
-
 /***/ 24:
-/***/ (function(module, exports, __webpack_require__) {
-
-// require('less/mobile.less')
-
-var Event = __webpack_require__(1)
-var Ispc = __webpack_require__(6).Ispc
-
-// var fullp = new Fullpage($('#pageLayout'))
-// new Isay($('.say'), $('.myself'))
-
-// Ispc()
-
-
-
-// ChangeHeight($('.static'), 80,'HTML+CSS')
-// ChangeHeight($('.dynamic'), 75,'JAVASCRIPT')
-// ChangeHeight($('.phone'), 70,'HTML5+CSS3')
-// ChangeHeight($('.frame'), 70,'JQ,VUE,REACT')
-
-/***/ }),
-
-/***/ 6:
 /***/ (function(module, exports) {
 
 
-var Ispc = (function () {
-  var uAgent = navigator.userAgent.toLowerCase()
-  console.log(uAgent)
+// var Event = require('mod/event.js')
+// var Ispc = require('mod/ispc.js').Ispc
 
-  var reg = /(phone|pad|pod|iphone|ipod|ios|ipad|android|mobile|blackberry|iemobile|mqqbrowser|juc|fennec|wosbrowser|browserng|webos|symbian|windows phone)/i
-
-  if (reg.test(uAgent)) {
-    console.log('这是手机')
-    if(location.pathname == '/mobile') return 
-    location.href = '/mobile'
-  }else{
-    if(location.pathname == '/') return     
-    console.log('这是PC')
-    location.href = '/'
-  }
-})()
-
-module.exports.Ispc = Ispc;
 
 
 /***/ })

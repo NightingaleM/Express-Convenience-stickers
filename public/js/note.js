@@ -78,41 +78,6 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 /* 1 */
 /***/ (function(module, exports) {
 
-var EventCenter = (function () {
-  var events = {}
-  function on(evt, handler) {
-    events[evt] = events[evt] || []
-    events[evt].push({
-      handler: handler
-    })
-  }
-  function fire(evt, args) {
-    if (!events[evt]) {
-      return
-    }
-    for (var i = 0; i < events[evt].length; i++) {
-      events[evt][i].handler(args)
-    }
-  }
-
-  return {
-    on: on,
-    fire: fire
-  }
-})()
-
-
-module.exports = EventCenter;
-
-
-// EventCenter.on('text-change',function(){
-//   console.log(data)
-// })
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -192,7 +157,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -551,6 +516,41 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+var EventCenter = (function () {
+  var events = {}
+  function on(evt, handler) {
+    events[evt] = events[evt] || []
+    events[evt].push({
+      handler: handler
+    })
+  }
+  function fire(evt, args) {
+    if (!events[evt]) {
+      return
+    }
+    for (var i = 0; i < events[evt].length; i++) {
+      events[evt][i].handler(args)
+    }
+  }
+
+  return {
+    on: on,
+    fire: fire
+  }
+})()
+
+
+module.exports = EventCenter;
+
+
+// EventCenter.on('text-change',function(){
+//   console.log(data)
+// })
+
+/***/ }),
 /* 4 */
 /***/ (function(module, exports) {
 
@@ -655,8 +655,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 6 */,
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {// var $=require('jquery')
@@ -697,6 +696,7 @@ module.exports.Toast = Toast
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
+/* 7 */,
 /* 8 */,
 /* 9 */,
 /* 10 */,
@@ -708,7 +708,7 @@ module.exports.Toast = Toast
 
 /* WEBPACK VAR INJECTION */(function($) {__webpack_require__(15)
 
-var Event = __webpack_require__(1)
+var Event = __webpack_require__(3)
 var NoteManager = __webpack_require__(17).NoteManager
 var Waterfall = __webpack_require__(23)
 
@@ -741,7 +741,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(3)(content, options);
+var update = __webpack_require__(2)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -761,7 +761,7 @@ if(false) {
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(undefined);
+exports = module.exports = __webpack_require__(1)(undefined);
 // imports
 
 
@@ -775,9 +775,9 @@ exports.push([module.i, "* {\n  padding: 0;\n  margin: 0;\n}\nbody {\n  overflow
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {var Toast = __webpack_require__(7).Toast
+/* WEBPACK VAR INJECTION */(function($) {var Toast = __webpack_require__(6).Toast
 var Note = __webpack_require__(20).Note
-var Event = __webpack_require__(1)
+var Event = __webpack_require__(3)
 
 
 var NoteManager = (function () {
@@ -833,7 +833,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(3)(content, options);
+var update = __webpack_require__(2)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -853,7 +853,7 @@ if(false) {
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(undefined);
+exports = module.exports = __webpack_require__(1)(undefined);
 // imports
 
 
@@ -868,8 +868,8 @@ exports.push([module.i, ".toast {\n  position: fixed;\n  left: 50%;\n  transform
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {__webpack_require__(21)
-var Toast = __webpack_require__(7).Toast
-var Event = __webpack_require__(1)
+var Toast = __webpack_require__(6).Toast
+var Event = __webpack_require__(3)
 
 function Note(opt) {
   this.initNote(opt)
@@ -1073,7 +1073,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(3)(content, options);
+var update = __webpack_require__(2)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -1093,7 +1093,7 @@ if(false) {
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(undefined);
+exports = module.exports = __webpack_require__(1)(undefined);
 // imports
 
 
