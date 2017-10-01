@@ -288,3 +288,143 @@ body {
   margin-top: 50px;
   font-size: 1.4em;
 }
+// 导航栏
+#chacha{
+	transform: translate(-10px,10px);
+	box-shadow: 1px -1px 11px 5px rgba(39, 39, 39, 0.42);
+	position: fixed;
+	top: 0;
+	right: -360px;
+	height: 100vh;
+  width: 350px;
+  transition: right 700ms
+}
+
+#navigations {
+	font-family: "Trebuchet MS";
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: -26px;
+	z-index: 10;
+}
+#navigations ul{
+	list-style: none;
+	font-weight: bold;
+}
+#navigations ul li:hover{
+	transform: translateX(-145px);
+}
+#navigations ul li{
+	height: 30px;
+	margin: 3px 0;
+	border-radius: 15px;
+	padding: 0 5px;
+	padding-right: 20px;
+	text-align: left;
+	transition: all 800ms;
+}
+#navigations ul li span {
+	display: inline-block;
+	width: 20px;
+	text-align: right;
+	font-weight: bold;
+	font-size: 1.3em;
+	padding-right: 3px;
+}
+#navigations ul li:nth-child(1){
+	background-color: red;
+}
+#navigations ul li:nth-child(2){
+	background-color: lightpink;
+}
+#navigations ul li:nth-child(3){
+	background-color: lightblue;
+}
+#navigations ul li:nth-child(4){
+	background-color: lightyellow;
+}
+#navigations ul li:nth-child(5){
+	background-color: lightgreen;
+}
+#chachalayout {
+	position: relative;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 11;
+	display: flex;
+	flex-direction: column;
+}
+#chat-box {
+  // background-color: lightgreen;
+  background: url(../imgs/红白.jpg);
+  background-size: 100% 100%;
+	overflow-y: scroll;
+	flex-grow: 1;
+	padding-top: 10px;
+}
+.sbsay {
+  background-color: rgba(255, 58, 44, 0.77);
+	position: relative;
+	width: 75%;
+	min-height: 70px;
+	border-radius: 6px;
+	margin-left: 70px;
+	padding: 5px;
+	margin-bottom: 20px;
+	box-shadow: 4px -2px 2px 2px rgba(0, 0, 0, 0.41)
+}
+.sbsay:after{
+    content: '';
+    border-right: 10px solid rgba(255, 58, 44, 0.77);
+    border-bottom: 10px solid transparent;
+    border-top: 10px solid transparent;
+    position: absolute;
+    top: 10px;
+    left: -10px;
+}
+.sbsay .sbhead{
+	position: absolute;
+	top: 0;
+	left: -55px;
+	width: 0;
+	height: 0;
+}
+
+#ichat {
+  background: url(../imgs/drink.jpg);
+  background-position: 40% 27%;
+	height: 200px;
+	margin-bottom: 10px;
+}
+#divide {
+	height: 25px;
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 10px;
+}
+#sendchat {
+	cursor: pointer;  
+  border: 1px solid black;
+  border-radius: 2px;
+	padding: 2px;
+	font-size: 0.9em;
+	background-color: #5ADD7A;  
+}
+
+#hidchat {
+  cursor: pointer;
+  background-color: #5ADD7A;
+  border: 1px solid black;
+  border-radius: 2px;
+	padding: 2px;
+  font-size: 0.9em;
+  margin: 0 5px;
+}
+#chatbox {
+	height: 85%;
+	overflow-y: auto;
+	padding: 3px;
+}

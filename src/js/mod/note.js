@@ -10,21 +10,6 @@ function Note(opt) {
 }
 
 Note.prototype = {
-  noteColor: [
-    ["#FFFFCC", "#CCFFFF"],
-    ["#FFCCCC", "#FFFFCC"],
-    ["#FFCCCC", "#FFFF99"],
-    ["#CCCCFF", "#FFCCCC"],
-    ["#FFCC99", "#CCCCCC"],
-    ["#CCFF99", "#FFCC99"],
-    ["#FFCCCC", "#99CC99"],
-    ["#99CCCC", "#FFCC99"],
-    ["#FFCCCC", "#99CCCC"],
-    ["#FF9966", "#FF6666"],
-    ["#CCFF99", "#CCFFFF"],
-    ["#FFCCCC", "#CCCCFF"]
-  ],
-
   defaultNote: {
     id: '',
     $content: $('#content').length > 0 ? $('#content') : $('body'),
@@ -71,12 +56,6 @@ Note.prototype = {
     }
     this.opt.$content.append(this.$note)
   },
-
-  // setStyle: function () {
-  //   var ccolor = this.noteColor[parseInt(Math.random() * 12)];
-  //   this.$note.find('.move').css('background-color', ccolor[0])
-  //   this.$note.find('.note-content').css('background-color', ccolor[1])
-  // },
 
   setLayout: function () {
     var _this = this

@@ -9,7 +9,8 @@ module.exports = {
 },
   output: {
     path: path.join(__dirname, "../public/js"),
-    filename: "[name].js"
+    filename: "[name].js",
+    publicPath: "js/"
   },
   module: {
     rules: [
@@ -28,7 +29,6 @@ module.exports = {
       jquery: path.join(__dirname, "js/lib/jquery-3.2.1.min.js"),
       mod: path.join(__dirname, "js/mod"),
       less: path.join(__dirname, "less"),
-      // imgs: path.join(__dirname,"imgs")
     }
   },
   plugins: [

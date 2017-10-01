@@ -6,7 +6,6 @@ function Fullpage(opt) {
   this.currentIdx = 0
   this.animating = false
   this.skill = 1
-  console.log('我有运行')
   this.saythat()
   this.needFullpage()
 }
@@ -22,7 +21,6 @@ Fullpage.prototype = {
   },
   needFullpage: function () {
     var $ww = $(window).width();
-    console.log($ww)
     if ($ww < 1024) {
       this.bindEvents(false)
     } else {
@@ -30,7 +28,6 @@ Fullpage.prototype = {
     }
   },
   bindEvents: function (TF) {
-    console.log(TF)
     if (TF) {
       this.$opt.addClass('hidden')
       this.$opt.on('wheel', begingFullpage = (e) => {
@@ -51,6 +48,8 @@ Fullpage.prototype = {
       } else if (tagIdx < 0) {
         reject()
       } else if (tagIdx > this.$sections.length - 1) {
+        reject()
+      } else if (tagIdx == this.currentIdx) {
         reject()
       } else {
         let _this = this

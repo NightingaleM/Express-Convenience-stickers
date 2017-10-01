@@ -11,6 +11,7 @@ var session = require('express-session');
 var main = require('./routes/main');
 var notebook = require('./routes/notebook');
 var api = require('./routes/api');
+var chat = require('./routes/chat');
 var mobile = require('./routes/mobile');
 
 // var auth = require('./routes/oauth');
@@ -37,6 +38,8 @@ app.use('/',main);
 app.use('/note', notebook);
 app.use('/api', api);
 app.use('/mobile', mobile);
+app.use('/chat', chat);
+
 
 // app.use('/oauth', auth);
 
