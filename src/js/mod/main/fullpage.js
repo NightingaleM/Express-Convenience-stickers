@@ -30,12 +30,22 @@ Fullpage.prototype = {
   bindEvents: function (TF) {
     if (TF) {
       this.$opt.addClass('hidden')
-      this.$opt.on('wheel', begingFullpage = (e) => {
-        let tagIdx = this.currentIdx + (parseInt(e.originalEvent.wheelDelta) < 0 ? 1 : -1)
-        this.changePage(tagIdx).then(() => {
-          this.currentIdx = tagIdx
-          this.saythat()
-        }, () => { })
+      this.$opt.on('wheel',(e) => {
+        console.log(e)
+        console.log(e.originalEvent.wheelDelta)
+        if(e.originalEvent.deltaY){
+          let tagIdx = this.currentIdx + (parseInt(e.originalEvent.deltaY) > 0 ? 1 : -1)
+          this.changePage(tagIdx).then(() => {
+            this.currentIdx = tagIdx
+            this.saythat()
+          }, () => { })          
+        }else if(e.originalEvent.wheelDelta){
+          let tagIdx = this.currentIdx + (parseInt(e.originalEvent.wheelDelta) < 0 ? 1 : -1)
+          this.changePage(tagIdx).then(() => {
+            this.currentIdx = tagIdx
+            this.saythat()
+          }, () => { })
+        }
       })
     } else {
       this.$opt.removeClass('hidden')

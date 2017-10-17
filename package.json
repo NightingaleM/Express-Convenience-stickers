@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "webpack": "webpack --config=src/webpack.config.js",
-    "watch": "onchange \"src/**/*.js\" \"src/**/*.less\" -- npm run webpack"
+    "watch": "onchange \"src/**/*.js\" \"src/**/**/*.js\" \"src/**/*.less\" -- npm run webpack"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -17,6 +17,9 @@
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
     "css-loader": "^0.28.4",
     "express-session": "^1.15.5",
     "file-loader": "^0.11.2",

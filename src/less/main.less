@@ -115,7 +115,8 @@ body {
   background-color: #E9EE9D;
 }
 .works h2 {
-  margin-top: 80px;
+
+  margin-top: 50px;
   text-align: center;  
 }
 .works .workbox {
@@ -254,21 +255,50 @@ body {
 .skills {
   flex-direction: column;
   background: linear-gradient(255deg, #c3f9ea, #eefe9a);
-  
+  position: relative;
 }
 .skills h2 {
-  margin-top: 80px;
+
+  margin-top: 50px;
   text-align: center;  
   
 }
-.skills #canvas {
+.skilllayout {
+
+  display: flex;
+  align-content: center;
+  border-radius: 10px;
+  box-shadow: 6px 6px 15px 3px #707070;
+  width: 80%;
+  min-width: 1000px;
+  margin: 0 auto;
+  margin-top: 35px;
+}
+.skilllayout .skillinfo {
+  margin-top: 50px;
+  padding-top: 50px;
+  font-family: "微软雅黑";
+}
+.skilllayout .skillinfo dl>dt,
+.skilllayout .skillinfo dl>dd {
+  margin-bottom: 10px;
+  padding-right: 20px;
+}
+.skilllayout .skillinfo dl>dt {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.skilllayout .skillinfo dl>dd{
+  padding-left: 20px;
+  word-wrap: break-word;
+}
+.skilllayout #canvas {
   box-sizing: content-box;
   margin: 0 auto;
   margin-top: 15px;
-  width: 700px;
-  height: 460px;
+  width: 850px;
+  height: 500px;
 }
-
 /* 联系方式---content */
 .content {
   flex-direction: column;
@@ -277,7 +307,8 @@ body {
   background-color: #c3f9ea;
 }
 .content h2 {
-  /* margin-top: 80px; */
+
+  /* margin-top: 50px; */
   text-align: center;
 }
 .content ul {

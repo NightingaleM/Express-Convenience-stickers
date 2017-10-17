@@ -1,4 +1,6 @@
+require('less/mobile.less')
 
-// var Event = require('mod/event.js')
-// var Ispc = require('mod/ispc.js').Ispc
+
+
+var Ispc = require('mod/ispc.js').Ispc
 

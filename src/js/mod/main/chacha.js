@@ -26,7 +26,7 @@ var Chat = (function () {
     var colorBox = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f']
     var color = ''
     for (let i = 0; i < 6; i++) {
-      index = parseInt(Math.random() * 16, 10)
+      let index = parseInt(Math.random() * 16, 10)
       color += colorBox[index]
     }
     return '#' + color
@@ -59,8 +59,9 @@ var Chat = (function () {
 
     $('#sendchat').on('click', function () {
       var ctext = $('#chatbox').html()
+      console.log(ctext)
       if (!$('#chatbox').html()) {
-        console.log('内容不能为空')
+        Toast('内容不能为空')
       } else {
         $.post('/chat/chat/add', {
           chatText: ctext,
